@@ -2,11 +2,11 @@ FROM node:14
 
 WORKDIR ./
 
-COPY package*.json ./
+COPY package*.json ./webapp
 
 RUN npm install
 
-COPY . .
+COPY . ./webapp
 
 EXPOSE 8080
 
