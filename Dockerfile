@@ -1,13 +1,13 @@
 FROM node:14
 
-WORKDIR ./
+WORKDIR /app
 
-COPY package*.json ./webapp
+COPY package*.json ./
 
 RUN npm install
 
-COPY . ./webapp
+COPY src/ ./src/
 
 EXPOSE 8080
 
-CMD ["node", "app.js"]
+CMD ["node", "src/app.js"]
