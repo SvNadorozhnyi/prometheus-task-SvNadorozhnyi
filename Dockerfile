@@ -1,17 +1,13 @@
 FROM node:14
 
-WORKDIR /app
+WORKDIR /webapp
 
-COPY ./package*.json ./
+COPY package*.json ./
 
 RUN npm install
 
-COPY ./ .
+COPY . .
 
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
-
-FROM redis:latest
-
-EXPOSE 6379
+CMD ["node", "app.js"]
