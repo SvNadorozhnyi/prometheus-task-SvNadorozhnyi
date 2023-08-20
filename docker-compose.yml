@@ -23,17 +23,21 @@ services:
       - app-network
 
   cadvisor:
-    image: google/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
     ports:
       - "8081:8081"
     command:
       - '-port=8081'
     volumes:
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
     networks:
       - app-network
+    depends_on:
+    - redis
 
   prometheus:
     image: prom/prometheus:latest
