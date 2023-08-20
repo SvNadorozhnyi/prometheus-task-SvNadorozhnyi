@@ -22,6 +22,17 @@ services:
     networks:
       - app-network
 
+  cadvisor:
+    image: google/cadvisor:latest
+    ports:
+      - "8081:8080"
+    volumes:
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - app-network
+
   prometheus:
     image: prom/prometheus:latest
     ports:
