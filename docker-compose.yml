@@ -26,6 +26,8 @@ services:
     image: google/cadvisor:latest
     ports:
       - "8081:8081"
+    command:
+      - '-port=8081'
     volumes:
       - /var/run:/var/run:ro
       - /sys:/sys:ro
