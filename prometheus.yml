@@ -5,7 +5,21 @@ scrape_configs:
   - job_name: 'webapp'
     static_configs:
       - targets: ['webapp:8080']
+    metrics_path: /metrics
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
 
-  - job_name: 'redis'
+      - source_labels: [__address__]
+        target_label: __address__
+
+  - job_name: 'docker'
     static_configs:
-      - targets: ['redis:6379']
+      - targets: ['cadvisor:8080']
+    metrics_path: /metrics/cadvisor
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+      - source_labels: [__address__]
+        target_label: __address__
