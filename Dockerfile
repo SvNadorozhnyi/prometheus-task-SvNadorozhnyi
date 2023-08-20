@@ -6,8 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY src/ ./src/
+COPY . .
 
 EXPOSE 8080
 
-CMD ["node", "src/app.js"]
+CMD [ "node", "src/app.js" ]
