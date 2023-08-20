@@ -2,7 +2,8 @@ version: '3'
 services:
   webapp:
     build:
-      context: ./webapp
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
 
